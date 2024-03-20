@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detection</title>
+    <style>
+        body {
+            background-color: black; /* Set the background color to black */
+            color: white; /* Set text color to white for better visibility */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Set the height of the body to the viewport height */
+        }
+        h1 {
+            text-align: center;
+            width: 180%;
+            font-size: 2.5em; 
+            
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        textarea {
+            width: 320%;
+            height: 100px;
+            margin-bottom: 10px; /* Adds some space at the bottom */
+        }
+        button {
+            margin-top: 20px; /* Adds some space above the button */
+        }
+        .centered {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fake News Detection</h1>
+    <form action="{{ url_for('predict') }}" method="post">
+        <textarea name="text" placeholder="Enter the news article here..." required></textarea>
+        <button type="submit">click</button>
+    </form>
+    <div class="centered">
+        {% if prediction %}
+            <h2>{{ prediction }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
